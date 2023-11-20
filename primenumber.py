@@ -5,6 +5,6 @@ for i in range(2, num // 2 + 1):
     if (num % i) == 0:
         z = z + 1
 if z <= 0:
-    print(num, "is a prome number")
+    print(num, "is a prime number")
 else:
-    print(num, "is not a prome number")
+    print(num, "is not a prime number")
