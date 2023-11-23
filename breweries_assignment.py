@@ -77,14 +77,14 @@ breweries_json = Breweries_data.json()
 # print(breweries_json)
 
 num_Breweries_data = len(breweries_json["data"])
-
+# Using a for loop to loop over the vlaues of num_Breweries_data dictionary and storing them in a new dictionary called New_Breweries_data.  
 for i in range(num_Breweries_data):
     New_Breweries_data={}
 # name, street, city, state, country, phone number and website.
     for key, value in breweries_json.items():
         # print(value)
         New_Breweries_data.update(value[i])
-    
+# Using an if statement nested inside a for loop to loop over the key and vlaues of New_Breweries_data dictionary.   
     for key, value in New_Breweries_data.items():
         # print(key)
         if key == "name":
