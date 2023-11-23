@@ -71,7 +71,7 @@
 import requests
 import json
 
-
+#Importing data via APi and assigning the request to Breweries_data
 Breweries_data = requests.get("https://informed-data-challenge.netlify.app/api/breweries")
 breweries_json = Breweries_data.json()
 # print(breweries_json)
