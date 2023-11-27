@@ -113,7 +113,7 @@ for i in range(num_Breweries_data):
             # print(f"{key}: {value}")
             New_Breweries_data_Dynamic_Dict.update({key:value})
 
-        New_Breweries_data_list.append(New_Breweries_data_Dynamic_Dict)
+    New_Breweries_data_list.append(New_Breweries_data_Dynamic_Dict)
     # print(New_Breweries_data)
     # print("\n")
 # print(New_Breweries_data_Dynamic_Dict)
