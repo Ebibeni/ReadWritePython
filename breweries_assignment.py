@@ -1,78 +1,11 @@
-
 # https://informed-data-challenge.netlify.app/api/breweries
 # name, street, city, state, country, phone number and website.
-
-# Breweries_data = {
-#     "data": [
-#     {
-#     "id": "10-56-brewing-company-knox",
-#     "name": "10-56 Brewing Company",
-#     "brewery_type": "micro",
-#     "street": "400 Brown Cir",
-#     "address_2": "",
-#     "address_3": "",
-#     "city": "Knox",
-#     "state": "Indiana",
-#     "county_province": "",
-#     "postal_code": "46534",
-#     "website_url": "",
-#     "phone": "6308165790",
-#     "country": "United States",
-#     "longitude": "-86.627954",
-#     "latitude": "41.289715",
-#     "tags": "",
-#     "rating": "4.859999999999999",
-#     "number_of_ratings": "46070"
-#     },
-#     {
-#     "id": "10-barrel-brewing-co-bend-1",
-#     "name": "10 Barrel Brewing Co",
-#     "brewery_type": "large",
-#     "street": "62970 18th St",
-#     "address_2": "",
-#     "address_3": "",
-#     "city": "Bend",
-#     "state": "Oregon",
-#     "county_province": "",
-#     "postal_code": "97701-9847",
-#     "website_url": "http://www.10barrel.com",
-#     "phone": "5415851007",
-#     "country": "United States",
-#     "longitude": "-121.28170597038259",
-#     "latitude": "44.08683530625218",
-#     "tags": "",
-#     "rating": "4.24",
-#     "number_of_ratings": "93220"
-#     },
-#     {
-#     "id": "10-barrel-brewing-co-bend-2",
-#     "name": "10 Barrel Brewing Co",
-#     "brewery_type": "large",
-#     "street": "1135 NW Galveston Ave Ste B",
-#     "address_2": "",
-#     "address_3": "",
-#     "city": "Bend",
-#     "state": "Oregon",
-#     "county_province": "",
-#     "postal_code": "97703-2465",
-#     "website_url": "",
-#     "phone": "5415851007",
-#     "country": "United States",
-#     "longitude": "-121.32880209261799",
-#     "latitude": "44.057564901366796",
-#     "tags": "",
-#     "rating": "2.35",
-#     "number_of_ratings": "97624"
-#     }
-#     ]
-# }
-
 
 import requests
 import json
 import pandas as pd
 
-#Importing data via APi and assigning the request to Breweries_data
+# Importing data via APi and assigning the request to Breweries_data
 url = "https://informed-data-challenge.netlify.app/api/breweries"
 
 # Calling url function
