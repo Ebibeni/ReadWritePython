@@ -4,9 +4,18 @@
 import requests
 import json
 import pandas as pd
+import mysql.connector
 
 # Importing data via APi and assigning the request to Breweries_data
 url = "https://informed-data-challenge.netlify.app/api/breweries"
+
+# Creating connection object and selecting Breweries DATABASE
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "",
+    database="Breweries"
+)
 
 # Calling url function
 def request_call(url_value):
@@ -76,3 +85,35 @@ results = data_manipulation(breweries_json)
 
 #calling the pandas data frame manipulation funtion
 pandas_data_frame(results)
+
+# print(mydb)
+
+
+#Create a DATABASE 
+mycursor = mydb.cursor()
+
+# mycursor.execute("CREATE DATABASE breweries")
+
+# name, street, city, state, country, phone number and website.
+
+# mycursor.execute("CREATE TABLE breweries_data (name VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255),country VARCHAR(255), phone INT, website VARCHAR(255))")
+
+for mydict in results:
+    placeholders = ', '.join(['%s'] * len(results))
+    columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
+    values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
+    sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('breweries_data', columns, values)
+    print(sql)
+
+    mycursor.execute(sql)
+
+    mydb.commit()
+
+    print(mycursor.rowcount, "record inserted.")
+
+
+#Show DATABASES created
+# mycursor.execute("SHOW DATABASES")
+
+# for x in mycursor:
+#   print(x)
