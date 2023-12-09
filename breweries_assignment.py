@@ -98,19 +98,22 @@ mycursor = mydb.cursor()
 
 # mycursor.execute("CREATE TABLE breweries_data (name VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255),country VARCHAR(255), phone INT, website VARCHAR(255))")
 
-for mydict in results:
-    placeholders = ', '.join(['%s'] * len(results))
-    columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
-    values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
-    sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('breweries_data', columns, values)
-    print(sql)
 
-    mycursor.execute(sql)
+def insert_into_db(data):
+    for mydict in data:
+        placeholders = ', '.join(['%s'] * len(data))
+        columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
+        values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
+        sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('breweries_data', columns, values)
+        print(sql)
 
-    mydb.commit()
+        mycursor.execute(sql)
 
-    print(mycursor.rowcount, "record inserted.")
+        mydb.commit()
 
+        print(mycursor.rowcount, "record inserted.")
+
+insert_into_db(results)
 
 #Show DATABASES created
 # mycursor.execute("SHOW DATABASES")
