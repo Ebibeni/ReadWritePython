@@ -101,7 +101,7 @@ mycursor = mydb.cursor()
 
 def insert_into_db(data):
     for mydict in data:
-        placeholders = ', '.join(['%s'] * len(data))
+        # placeholders = ', '.join(['%s'] * len(data))
         columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
         values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
         sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('breweries_data', columns, values)
