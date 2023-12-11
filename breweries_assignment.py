@@ -74,30 +74,6 @@ def pandas_data_frame(New_Breweries_data_list_value):
     df = pd.DataFrame(New_Breweries_data_list_value)  
     return print(df)
 
-
-# calling the request function and assigning it to breweries_json
-breweries_json = request_call(url)
-# print(breweries_json)
-
-# calling the data_manipulation function and assigning it to results while passing breweries_json as the arg
-results = data_manipulation(breweries_json)
-# print(results)
-
-#calling the pandas data frame manipulation funtion
-pandas_data_frame(results)
-
-# print(mydb)
-
-
-#Create a DATABASE 
-mycursor = mydb.cursor()
-
-# mycursor.execute("CREATE DATABASE breweries")
-
-# name, street, city, state, country, phone number and website.
-
-# mycursor.execute("CREATE TABLE breweries_data (name VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255),country VARCHAR(255), phone INT, website VARCHAR(255))")
-
 # Check if data exists in the table "breweries_data"
 def check_table_data_exists():
     query = "SELECT EXISTS(SELECT 1 from breweries_data) AS Output;"
@@ -133,6 +109,31 @@ def insert_into_db(data):
         mydb.commit()
 
         print(mycursor.rowcount, "record inserted.")
+
+
+# calling the request function and assigning it to breweries_json
+breweries_json = request_call(url)
+# print(breweries_json)
+
+# calling the data_manipulation function and assigning it to results while passing breweries_json as the arg
+results = data_manipulation(breweries_json)
+# print(results)
+
+#calling the pandas data frame manipulation funtion
+pandas_data_frame(results)
+
+# print(mydb)
+
+
+#Create a DATABASE 
+mycursor = mydb.cursor()
+
+# mycursor.execute("CREATE DATABASE breweries")
+
+# name, street, city, state, country, phone number and website.
+
+# mycursor.execute("CREATE TABLE breweries_data (name VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255),country VARCHAR(255), phone INT, website VARCHAR(255))")
+
 
 # calling the check function
 check_table_data_exists()
