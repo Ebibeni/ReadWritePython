@@ -98,6 +98,27 @@ mycursor = mydb.cursor()
 
 # mycursor.execute("CREATE TABLE breweries_data (name VARCHAR(255), street VARCHAR(255), city VARCHAR(255), state VARCHAR(255),country VARCHAR(255), phone INT, website VARCHAR(255))")
 
+# Check if data exists in the table "breweries_data"
+def check_table_data_exists():
+    query = "SELECT EXISTS(SELECT 1 from breweries_data) AS Output;"
+
+    mycursor.execute(query)
+    rows = mycursor.fetchone()
+    print("")
+    print("")
+    print(rows)
+    print("")
+    print(rows[0])
+    print("")
+    print(type(rows))
+
+
+    if rows[0] == 1:
+        Trunc_query = "TRUNCATE TABLE breweries_data;"
+        mycursor.execute(Trunc_query)
+        print(Trunc_query)
+
+# Created a function to insert formatted data from API
 
 def insert_into_db(data):
     for mydict in data:
@@ -113,7 +134,15 @@ def insert_into_db(data):
 
         print(mycursor.rowcount, "record inserted.")
 
+# calling the check function
+check_table_data_exists()
+
+# calling the insert function
 insert_into_db(results)
+
+
+
+
 
 #Show DATABASES created
 # mycursor.execute("SHOW DATABASES")
