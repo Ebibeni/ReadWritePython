@@ -12,6 +12,9 @@ def request_call(url_value):
 
     return chicago_crime_data_json
 
+def data_manipulation(chicago_crime_data_json_value):
+    length_chicago_crime_data = len(chicago_crime_data_json_value)
+    return length_chicago_crime_data
 
-
-# print(request_call(url))
+chicago_crime_data_json_value = request_call(url)
+print(data_manipulation(chicago_crime_data_json_value))
