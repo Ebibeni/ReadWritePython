@@ -1,5 +1,6 @@
 import requests
 import json
+import pandas as pd
 
 # Instruction
 # Get the data from the API first and then save it as a CSV file or a Json file
@@ -16,24 +17,11 @@ def request_call(url_value):
 
     return chicago_crime_data_json
 
-def data_manipulation(chicago_crime_data_json_value):
-    length_chicago_crime_data = len(chicago_crime_data_json_value)
-    new_chicago_crime_data = {}
-
-    for index in range(length_chicago_crime_data):
-
-        # print(index)
-        for key in chicago_crime_data_json_value[index]:
-            # print(chicago_crime_data_json_value[index][key])
-            print(key)
-
-
-    
-
     
 
 
 chicago_crime_data_json_value = request_call(url)
-# print(data_manipulation(chicago_crime_data_json_value))
-# data_manipulation(chicago_crime_data_json_value)
-print(data_manipulation(chicago_crime_data_json_value))
+# print(chicago_crime_data_json_value)
+
+df = pd.DataFrame(chicago_crime_data_json_value)
+print(df)
