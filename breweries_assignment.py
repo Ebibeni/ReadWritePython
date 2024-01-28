@@ -17,7 +17,7 @@ mydb = mysql.connector.connect(
     database="Breweries"
 )
 
-# Calling url function
+# defining the url function
 def request_call(url_value):
     Breweries_data = requests.get(url_value)
     breweries_json = Breweries_data.json()
