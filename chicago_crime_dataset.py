@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 import csv
+from datetime import datetime
 
 # Instruction
 # Get the data from the API first and then save it as a CSV file or a Json file
@@ -10,15 +11,18 @@ import csv
 # ID to UPDATED ON FIELDS ONLY.
 # Importing data via APi and assigning the request to Breweries_data
 url = "https://data.cityofchicago.org/resource/ijzp-q8t2.json?"
-file_path = "/Users/jamesbeni/Downloads/ReadWriteDE/ReadWritePython/data_file/output_data1.csv"
+
+now = datetime.now()
+Current_time = now.strftime("%H:%M:%S")
+Current_time_str = str(Current_time)
+
+file_path = "/Users/jamesbeni/Downloads/ReadWriteDE/ReadWritePython/data_file/output_data" + Current_time_str + ".csv"
 # defining the url function
 def request_call(url_value):
     chicago_crime_data = requests.get(url_value)
     chicago_crime_data_json = chicago_crime_data.json()
 
     return chicago_crime_data_json
-
-    
 
 
 chicago_crime_data_json_value = request_call(url)
@@ -28,7 +32,6 @@ df = pd.DataFrame(chicago_crime_data_json_value)
 print(df)
 
 df.to_csv(file_path, index=False)
-# files.download('Chicago_Crime.csv')
 
 
 # #Assigning the url to api_url
