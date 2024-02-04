@@ -3,10 +3,19 @@ import json
 import pandas as pd
 import csv
 from datetime import datetime
+import mysql.connector
 
 # Instruction
 # Get the data from the API first and then save it as a CSV file or a Json file
 # and then use the data from the file.
+
+# Creating connection object and selecting Breweries DATABASE
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "",
+    database="chicago_city_crime"
+)
 
 #Assigning the url to api_url
 api_url = "https://data.cityofchicago.org/resource/ijzp-q8t2.json?"
@@ -37,14 +46,7 @@ api_data = fetch_data_from_api(api_url)
 len_api_data = len(api_data)
 # print(len_api_data)
 
-
-# case_id= [dictionary["id"] for dictionary in api_data]
-# case_number= [dictionary["case_number"] for dictionary in api_data]
-
-# print(case_id)
-# print(case_number)
-
-def data_manipulation():
+def data_manipulation(api_data):
     data_List = []
     for length in api_data:
         data_dic = {}
@@ -120,3 +122,15 @@ df = pd.DataFrame(api_data)
 # # print(df)
 
 # df.to_csv(file_path, index=False)
+
+selected_data = data_manipulation(api_data)
+# print(pd.DataFrame(selected_data))
+
+#Create a DATABASE 
+mycursor = mydb.cursor()
+
+# mycursor.execute("CREATE DATABASE chicago_city_crime")
+
+# id, case_number, date, block, iucr, primary_type, description, location_description, arrest, domestic, beat, district, ward, community_area, fbi_code, x_coordinate, y_coordinate, year, updated_on, latitude and longitude.
+
+mycursor.execute("CREATE TABLE chicago_city_crime_data (id VARCHAR(255), case_number VARCHAR(255), date VARCHAR(255), block VARCHAR(255),iucr VARCHAR(255), primary_type VARCHAR(255), description VARCHAR(255), location_description VARCHAR(255), arrest VARCHAR(255), domestic VARCHAR(255), beat VARCHAR(255), district VARCHAR(255), ward VARCHAR(255), community_area VARCHAR(255), fbi_code VARCHAR(255), x_coordinate VARCHAR(255), y_coordinate VARCHAR(255),  year VARCHAR(255), updated_on VARCHAR(255), latitude VARCHAR(255), longitude VARCHAR(255))")
