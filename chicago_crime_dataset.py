@@ -133,4 +133,6 @@ mycursor = mydb.cursor()
 
 # id, case_number, date, block, iucr, primary_type, description, location_description, arrest, domestic, beat, district, ward, community_area, fbi_code, x_coordinate, y_coordinate, year, updated_on, latitude and longitude.
 
-mycursor.execute("CREATE TABLE chicago_city_crime_data (id VARCHAR(255), case_number VARCHAR(255), date VARCHAR(255), block VARCHAR(255),iucr VARCHAR(255), primary_type VARCHAR(255), description VARCHAR(255), location_description VARCHAR(255), arrest VARCHAR(255), domestic VARCHAR(255), beat VARCHAR(255), district VARCHAR(255), ward VARCHAR(255), community_area VARCHAR(255), fbi_code VARCHAR(255), x_coordinate VARCHAR(255), y_coordinate VARCHAR(255),  year VARCHAR(255), updated_on VARCHAR(255), latitude VARCHAR(255), longitude VARCHAR(255))")
+# Database table creation function
+def create_db_table():
+    mycursor.execute("CREATE TABLE chicago_city_crime_data (id VARCHAR(255), case_number VARCHAR(255), date VARCHAR(255), block VARCHAR(255),iucr VARCHAR(255), primary_type VARCHAR(255), description VARCHAR(255), location_description VARCHAR(255), arrest VARCHAR(255), domestic VARCHAR(255), beat VARCHAR(255), district VARCHAR(255), ward VARCHAR(255), community_area VARCHAR(255), fbi_code VARCHAR(255), x_coordinate VARCHAR(255), y_coordinate VARCHAR(255),  year VARCHAR(255), updated_on VARCHAR(255), latitude VARCHAR(255), longitude VARCHAR(255))")
