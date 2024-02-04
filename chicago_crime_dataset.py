@@ -121,7 +121,7 @@ def data_manipulation(api_data):
 df = pd.DataFrame(api_data)
 # # print(df)
 
-# df.to_csv(file_path, index=False)
+df.to_csv(file_path, index=False)
 
 selected_data = data_manipulation(api_data)
 # print(pd.DataFrame(selected_data))
