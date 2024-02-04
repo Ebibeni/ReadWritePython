@@ -9,7 +9,7 @@ import mysql.connector
 # Get the data from the API first and then save it as a CSV file or a Json file
 # and then use the data from the file.
 
-# Creating connection object and selecting Breweries DATABASE
+# Creating connection object and selecting chicago_city_crime DATABASE
 mydb = mysql.connector.connect(
     host = "localhost",
     user = "root",
