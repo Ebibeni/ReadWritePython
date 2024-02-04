@@ -153,10 +153,28 @@ def check_table_data_exists():
 
 
     if rows[0] == 1:
-        Trunc_query = "TRUNCATE TABLE breweries_data;"
+        Trunc_query = "TRUNCATE TABLE chicago_city_crime_data;"
         mycursor.execute(Trunc_query)
         print(Trunc_query)
 
-# Function to check if data exists and truncate if returns true
-# check_table_data_exists()
+def insert_into_db(data):
+    for mydict in data:
+        # placeholders = ', '.join(['%s'] * len(data))
+        columns = ', '.join("`" + str(x).replace('/', '_') + "`" for x in mydict.keys())
+        values = ', '.join("'" + str(x).replace('/', '_') + "'" for x in mydict.values())
+        sql = "INSERT INTO %s ( %s ) VALUES ( %s );" % ('chicago_city_crime_data', columns, values)
+        print(sql)
+
+        mycursor.execute(sql)
+
+        mydb.commit()
+
+    print(mycursor.rowcount, "record inserted.")
+
 # create_db_table()
+        
+# Function to check if data exists and truncate if returns true
+check_table_data_exists()
+
+# Insert data to the chicago_city_crime_data table
+insert_into_db(selected_data)
